@@ -1,0 +1,11 @@
+{
+  "extends": "@expense-tracker/typescript-config/api.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src"]
+}

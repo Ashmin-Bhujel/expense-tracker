@@ -1,0 +1,12 @@
+{
+  "name": "@expense-tracker/typescript-config",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    "./api.json": "./api.json",
+    "./web.app.json": "./web.app.json",
+    "./web.node.json": "./web.node.json"
+  },
+  "packageManager": "pnpm@10.30.3"
+}

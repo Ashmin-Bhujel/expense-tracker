@@ -1,0 +1,31 @@
+{
+  "name": "@expense-tracker/web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3000",
+    "build": "tsc -b && vite build",
+    "lint": "eslint src",
+    "type-check": "tsc --noEmit",
+    "preview": "vite preview --port 3000"
+  },
+  "dependencies": {
+    "@expense-tracker/eslint-config": "workspace:*",
+    "@expense-tracker/typescript-config": "workspace:*",
+    "@tailwindcss/vite": "^4.2.2",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwindcss": "^4.2.2"
+  },
+  "packageManager": "pnpm@10.30.3",
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^9.39.4",
+    "typescript": "^5.9.3",
+    "vite": "^8.0.2"
+  }
+}

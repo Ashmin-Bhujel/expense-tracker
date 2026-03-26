@@ -1,0 +1,30 @@
+{
+  "name": "@expense-tracker/api",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "packageManager": "pnpm@10.30.3",
+  "scripts": {
+    "build": "tsc --build",
+    "dev": "tsx watch ./src/index.ts",
+    "lint": "eslint src",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@expense-tracker/eslint-config": "workspace:*",
+    "@expense-tracker/typescript-config": "workspace:*",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "mongoose": "^9.3.3",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.5.0",
+    "eslint": "^9.39.4",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}

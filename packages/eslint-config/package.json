@@ -1,0 +1,21 @@
+{
+  "name": "@expense-tracker/eslint-config",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    "./api.js": "./api.js",
+    "./web.js": "./web.js"
+  },
+  "packageManager": "pnpm@10.30.3",
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@types/node": "^25.5.0",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.4.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.57.2"
+  }
+}
