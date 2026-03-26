@@ -13,10 +13,19 @@
   "dependencies": {
     "@expense-tracker/eslint-config": "workspace:*",
     "@expense-tracker/typescript-config": "workspace:*",
+    "@fontsource-variable/geist": "^5.2.8",
     "@tailwindcss/vite": "^4.2.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.7.0",
+    "radix-ui": "^1.4.3",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "tailwindcss": "^4.2.2"
+    "shadcn": "^4.1.0",
+    "tailwind-merge": "^3.5.0",
+    "tailwindcss": "^4.2.2",
+    "tslib": "^2.8.1",
+    "tw-animate-css": "^1.4.0"
   },
   "packageManager": "pnpm@10.30.3",
   "devDependencies": {
