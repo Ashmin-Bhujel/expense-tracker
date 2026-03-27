@@ -1,24 +1,21 @@
+import type { APIEnvironmentType } from "@expense-tracker/zod/environment";
+
+import { apiEnvironmentZodSchema } from "@expense-tracker/zod/environment";
 import { config } from "dotenv";
-import * as z from "zod";
 
 // * Dotenv config
 config({
   path: [".env", ".env.local"],
 });
 
-// * Type definitions
-const environmentZodSchema = z.object({
-  PORT: z.coerce.number().min(5000).default(5000),
-});
-type EnvironmentType = z.infer<typeof environmentZodSchema>;
+let environment: APIEnvironmentType = {} as APIEnvironmentType;
 
-let environment: EnvironmentType = {} as EnvironmentType;
-
-const { success, data, error } = environmentZodSchema.safeParse(process.env);
+// * Parsing environment variables
+const { success, data, error } = apiEnvironmentZodSchema.safeParse(process.env);
 
 if (!success) {
-  console.log("Invalid environment variables");
-  console.log("Error:", error.message);
+  console.log("Invalid environment variables for API");
+  console.log("Issues:", error.issues);
   process.exit(1);
 } else {
   environment = data;

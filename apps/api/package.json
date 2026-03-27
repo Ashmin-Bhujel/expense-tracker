@@ -7,12 +7,14 @@
   "scripts": {
     "build": "tsc --build",
     "dev": "tsx watch ./src/index.ts",
+    "start": "node ./dist/index.js",
     "lint": "eslint src",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@expense-tracker/eslint-config": "workspace:*",
     "@expense-tracker/typescript-config": "workspace:*",
+    "@expense-tracker/zod": "workspace:*",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
