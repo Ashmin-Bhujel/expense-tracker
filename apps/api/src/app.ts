@@ -1,4 +1,6 @@
 import express from "express";
+import environment from "./environment.js";
+import { logger } from "./middlewares/logger.middleware.js";
 import { notFound } from "./middlewares/not-found.middleware.js";
 
 // * Express config
@@ -11,6 +13,10 @@ app.use(
     extended: true,
   }),
 );
+// * Logger
+if (environment.NODE_ENV === "development") {
+  app.use(logger);
+}
 
 // * Routes
 app.get("/", (_req, res) => {
