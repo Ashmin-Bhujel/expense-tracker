@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "exports": {
-    "./environment": "./environment.ts"
+    "./environment": "./environment.ts",
+    "./user": "./user.ts"
   },
   "peerDependencies": {
     "zod": "^4.3.6"
