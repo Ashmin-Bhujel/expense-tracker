@@ -1,0 +1,13 @@
+{
+  "name": "@expense-tracker/zod",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    "./environment": "./environment.ts"
+  },
+  "peerDependencies": {
+    "zod": "^4.3.6"
+  },
+  "packageManager": "pnpm@10.30.3"
+}
