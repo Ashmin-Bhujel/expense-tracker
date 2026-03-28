@@ -4,7 +4,7 @@ import type { StringValue } from "ms";
 
 import { cookieOptions } from "@/constants/cookie-parser.js";
 import environment from "@/environment.js";
-import { loginService, registerService } from "@/services/auth.service.js";
+import { loginService, logoutService, registerService } from "@/services/auth.service.js";
 import { ApiResponse } from "@/utils/api-response.js";
 import ms from "ms";
 
@@ -49,6 +49,21 @@ export async function loginController(
     });
 
     return res.json(new ApiResponse("User logged in successfully", { user }));
+  } catch (error) {
+    next(error);
+  }
+}
+
+// * Logout
+export async function logoutController(req: Request, res: Response, next: NextFunction) {
+  try {
+    await logoutService(req, res);
+
+    // ! Clear cookies
+    res.clearCookie("accessToken", cookieOptions);
+    res.clearCookie("refreshToken", cookieOptions);
+
+    return res.json(new ApiResponse("User logged out successfully"));
   } catch (error) {
     next(error);
   }
