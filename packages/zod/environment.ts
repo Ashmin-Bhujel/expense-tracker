@@ -15,6 +15,11 @@ export const apiEnvironmentZodSchema = z.object({
   // * MongoDB
   MONGODB_URI: z.string("Please set the MONGODB_URI"),
   MONGODB_DBNAME: z.string("Please set the MONGODB_DBNAME"),
+  // * JWT
+  JWT_ACCESS_TOKEN_SECRET_KEY: z.string("Please set the JWT_ACCESS_TOKEN_SECRET_KEY"),
+  JWT_ACCESS_TOKEN_EXPIRES_IN: z.string("Please set the JWT_ACCESS_TOKEN_EXPIRES_IN"),
+  JWT_REFRESH_TOKEN_SECRET_KEY: z.string("Please set the JWT_REFRESH_TOKEN_SECRET_KEY"),
+  JWT_REFRESH_TOKEN_EXPIRES_IN: z.string("Please set the JWT_REFRESH_TOKEN_EXPIRES_IN"),
 });
 
 // * Types
