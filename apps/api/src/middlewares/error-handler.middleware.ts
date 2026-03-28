@@ -1,6 +1,7 @@
 import type { NextFunction, Request, Response } from "express";
 
 import { ApiError } from "@/utils/api-error.js";
+import jwt from "jsonwebtoken";
 import { MongooseError } from "mongoose";
 import { ZodError } from "zod";
 
@@ -8,6 +9,10 @@ import { ZodError } from "zod";
 export function errorHandler(error: unknown, _req: Request, res: Response, _next: NextFunction) {
   const statusCode = res.statusCode && res.statusCode !== 200 ? res.statusCode : 500;
   res.status(statusCode);
+  // * Handle JWT errors
+  if (error instanceof jwt.JsonWebTokenError) {
+    return res.json(new ApiError(error.name, [error.message]));
+  }
 
   // * Handle mongoose errors
   if (error instanceof MongooseError) {

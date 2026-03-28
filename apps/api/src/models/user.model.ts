@@ -4,10 +4,10 @@ import type { Document } from "mongoose";
 import { Schema, model } from "mongoose";
 
 // * Types
-export type IUser = Document & CreateUserType;
+export type IUserType = Document & CreateUserType;
 
 // * Schema
-export const userMongooseSchema = new Schema<IUser>(
+export const userMongooseSchema = new Schema<IUserType>(
   {
     username: {
       type: String,
@@ -30,6 +30,8 @@ export const userMongooseSchema = new Schema<IUser>(
     },
     avatarURL: {
       type: String,
+      required: false,
+      default: "",
     },
     dateOfBirth: {
       type: Date,
