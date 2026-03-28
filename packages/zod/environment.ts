@@ -7,11 +7,8 @@ export const apiEnvironmentZodSchema = z.object({
     .enum(["development", "production"], "Please set the valid NODE_ENV")
     .default("production"),
   // * Server
-  PORT: z.coerce
-    .number("Please set the server PORT")
-    .min(5000, "The server PORT number should be greater than 5000")
-    .max(6000, "The server PORT number should be less than 6000")
-    .default(5000),
+  PORT: z.string("Please set the server PORT").default("5000"),
+  CORS_ORIGIN: z.string("Please set the CORS_ORIGIN"),
   // * MongoDB
   MONGODB_URI: z.string("Please set the MONGODB_URI"),
   MONGODB_DBNAME: z.string("Please set the MONGODB_DBNAME"),
