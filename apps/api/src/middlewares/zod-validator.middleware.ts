@@ -15,8 +15,9 @@ export function zodValidator<SchemaType extends z.ZodSchema>(
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { success, data: _data, error } = zodSchema.safeParse(req[toBeValidate]);
 
+      // ? Check if successfully parsed or not
       if (!success) {
-        res.statusCode = 400;
+        res.status(400);
         throw error;
       }
 
