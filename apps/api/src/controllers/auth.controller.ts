@@ -1,8 +1,12 @@
 import type { CreateUserType, LoginUserType } from "@expense-tracker/zod/user";
 import type { NextFunction, Request, Response } from "express";
+import type { StringValue } from "ms";
 
+import { cookieOptions } from "@/constants/cookie-parser.js";
+import environment from "@/environment.js";
 import { loginService, registerService } from "@/services/auth.service.js";
 import { ApiResponse } from "@/utils/api-response.js";
+import ms from "ms";
 
 // * Register
 export async function registerController(
@@ -29,6 +33,20 @@ export async function loginController(
   try {
     const loginUserData = req.body;
     const user = await loginService(res, loginUserData);
+
+    // * Set cookies
+    res.cookie("accessToken", user.accessToken, {
+      ...cookieOptions,
+      expires: new Date(
+        Date.now() + ms(environment.JWT_ACCESS_TOKEN_EXPIRES_IN as StringValue) + ms("2m"),
+      ),
+    });
+    res.cookie("refreshToken", user.refreshToken, {
+      ...cookieOptions,
+      expires: new Date(
+        Date.now() + ms(environment.JWT_REFRESH_TOKEN_EXPIRES_IN as StringValue) + ms("2m"),
+      ),
+    });
 
     return res.json(new ApiResponse("User logged in successfully", { user }));
   } catch (error) {

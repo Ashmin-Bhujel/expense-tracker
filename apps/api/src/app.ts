@@ -1,3 +1,5 @@
+import cookieParser from "cookie-parser";
+import cors from "cors";
 import express from "express";
 import environment from "./environment.js";
 import { auth } from "./middlewares/auth.middleware.js";
@@ -12,12 +14,18 @@ import { ApiResponse } from "./utils/api-response.js";
 export const app = express();
 
 // * Middlewares
+app.use(
+  cors({
+    origin: environment.CORS_ORIGIN,
+  }),
+);
 app.use(express.json());
 app.use(
   express.urlencoded({
     extended: true,
   }),
 );
+app.use(cookieParser());
 // * Logger
 if (environment.NODE_ENV === "development") {
   app.use(logger);

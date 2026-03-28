@@ -7,18 +7,11 @@ export function auth(req: Request, res: Response, next: NextFunction) {
   try {
     const authorizationHeader = req.headers.authorization;
 
-    // ? Check if user provided authorization header or not
-    if (!authorizationHeader || !authorizationHeader.startsWith("Bearer")) {
-      res.status(400);
-      throw new Error("Authorization header not provided");
-    }
-
-    const accessToken = authorizationHeader.split("Bearer ")[1];
+    const accessToken = authorizationHeader?.split("Bearer ")[1] || req.cookies["accessToken"];
 
     // ? Check for the access token
     if (!accessToken) {
-      res.status(400);
-      throw new Error("Invalid JWT access token");
+      throw new Error("Invalid access token");
     }
 
     // * Verify access token
@@ -27,6 +20,7 @@ export function auth(req: Request, res: Response, next: NextFunction) {
 
     next();
   } catch (error) {
+    res.status(400);
     next(error);
   }
 }
